@@ -1,8 +1,16 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 11:28:18 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/14 11:31:52 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int	position_c(const char *s, int c)
+static int	position_c(const char *s, char c)
 {
 	int	i;
 
@@ -19,28 +27,9 @@ static int	position_c(const char *s, int c)
 char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	int		j;
-	char	*dest;
 
-	dest = (char *)s;
-	i = position_c(s, c);
-	j = 0;
-	while (s[i])
-	{
-		dest[j] = s[i];
-		j++;
-		i++;
-	}
-	if (j == 0 && c != '\0')
-		return (NULL);
-	dest[j] = '\0';
-	return (dest);
-}
-
-int	main(void)
-{
-	char sr[100] = "hello";
-	int k = 'h';
-	printf("%s\n", ft_strchr(sr, k));
-	printf("%s\n", strchr(sr, k));
+	i = position_c(s, (char)c);
+	if ((char)c != '\0' && s[i] == '\0')
+		return (0);
+	return ((char *)(s + i));
 }

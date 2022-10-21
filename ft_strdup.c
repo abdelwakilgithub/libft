@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	len_str(const char *s1)
@@ -18,7 +17,7 @@ char	*ft_strdup(const char *s1)
 
 	dest = (char *)malloc(len_str(s1) * sizeof(char) + 1);
 	if (!dest)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (s1[i])
 	{
@@ -27,11 +26,4 @@ char	*ft_strdup(const char *s1)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int	main(void)
-{
-	char	s1[] = "hello world";
-
-	printf("%s\n", ft_strdup(s1));
 }

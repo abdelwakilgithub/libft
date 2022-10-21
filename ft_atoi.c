@@ -1,11 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	result;
-	int	signe;
+	long	i;
+	long	result;
+	long	signe;
 
 	i = 0;
 	result = 0;
@@ -23,14 +20,4 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (signe * result);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
-	{	
-		printf("%d\n", atoi(av[1]));
-		printf("%d\n", ft_atoi(av[1]));
-	}
-	return (0);
 }

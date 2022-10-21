@@ -1,6 +1,14 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/14 11:49:03 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/14 11:49:11 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 static int	len_str(const char *s1)
 {
@@ -12,7 +20,7 @@ static int	len_str(const char *s1)
 	return (i);
 }
 
-static int	position_c(const char *s, int c)
+static int	position_c(const char *s, char c)
 {
 	int	i;
 
@@ -23,34 +31,17 @@ static int	position_c(const char *s, int c)
 			return (i);
 		i--;
 	}
-	return (len_str(s));
+	return (-1);
 }
 
 char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
-	int		j;
-	char	*dest;
 
-	dest = (char *)s;
-	i = position_c(s, c);
-	j = 0;
-	while (s[i])
-	{
-		dest[j] = s[i];
-		j++;
-		i++;
-	}
-	if (j == 0 && c != '\0')
-		return (NULL);
-	dest[j] = '\0';
-	return (dest);
-}
-
-int	main(void)
-{
-	char sr[100] = "hello";
-	int k = 'o';
-	printf("%s\n", ft_strrchr(sr, k));
-	printf("%s\n", strrchr(sr, k));
+	i = position_c(s, (char)c);
+	if ((char)c == '\0')
+		return ((char *)s + len_str(s));
+	if (i == -1 && (char)c != '\0')
+		return (0);
+	return ((char *)s + i);
 }

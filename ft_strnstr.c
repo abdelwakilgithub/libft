@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 static size_t	len_str(char *str)
 {
@@ -19,7 +18,7 @@ static int	locate_f(char *haystack, char *needle, size_t i)
 	while (needle[j])
 	{
 		if (needle[j] != haystack[i])
-			return (0);
+			return (-1);
 		j++;
 		i++;
 	}
@@ -35,20 +34,13 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	i = 0;
 	n_haystack = (char *)haystack;
 	n_needle = (char *)needle;
+	if (n_needle[0] == '\0')
+		return (n_haystack);
 	while (n_haystack[i] && i + len_str(n_needle) <= len)
 	{
-		if (locate_f(n_haystack, n_needle, i))
+		if (locate_f(n_haystack, n_needle, i) >= 0)
 			return (n_haystack + locate_f(n_haystack, n_needle, i));
 		i++;
 	}
-	return (NULL);
-}
-
-int	main(void)
-{
-	const char	*haystack = "hello world";
-	const char	*needle = "lo";
-
-	printf("%s\n", strnstr(haystack, needle, 4));
-	printf("%s\n", ft_strnstr(haystack, needle, 4));
+	return (0);
 }

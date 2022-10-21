@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-
+#include <stdlib.h>
+/* 
 static size_t	fn_len(char *str)
 {
 	size_t	i;
@@ -31,25 +30,39 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[j] = '\0';
 	return (len_c + fn_len(n_src));
 }
+  */
 
-int	main(int ac, char **av)
-{	
-	char str[] = "world";
-	char dest1[100] = "hello";
-	char dest2[100] = "hello";
+static size_t	fn_len(char *str)
+{
+	size_t	i;
 
-	if(ac == 2)
-	{
-		printf("dest : %s, src : %s\n", av[1], str);
-		printf("%lu\n", strlcat(av[1], str, 2));
-		printf("dest : %s, src : %s\n\n", av[1], str);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
-		printf("dest : %s, src : %s\n", dest1, str);
-		printf("%lu\n", strlcat(dest1, str, 2));
-		printf("dest : %s, src : %s\n\n", dest1, str);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len_dst;
+	char	*n_src;
 
-		printf("dest : %s, src : %s\n", dest2, str);
-		printf("%lu\n", ft_strlcat(dest2, str, 2));
-		printf("dest : %s, src : %s\n", dest2, str);
-	}
+	i = 0;
+	len_dst = fn_len(dst);
+	j = len_dst;
+	n_src = (char *)src;
+
+	if (len_dst > dstsize)
+		return (fn_len(n_src) + dstsize);
+	if (!src[i])
+		return (len_dst + fn_len(n_src));
+	while (n_src[i] && i < dstsize - len_dst)
+		dst[j++] = n_src[i++];
+	if (len_dst + i == dstsize && len_dst < dstsize)
+		dst[--j] = '\0';
+	else
+		dst[j] = '\0';
+	return (len_dst + fn_len(n_src));
 }
