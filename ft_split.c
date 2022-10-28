@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	len_str(char const *s, char c, int i)
 {
@@ -66,6 +65,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (0);
 	result = (char **)malloc(len_split(s, c) * sizeof(char *));
 	if (!result)
 		return (0);

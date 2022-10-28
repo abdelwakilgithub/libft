@@ -1,19 +1,27 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 13:01:54 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/26 13:02:18 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* static void	fn(unsigned int i, char * str)
-{
-	i++;
-	*str = *str + 2;
-} */
+#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int	i;
 
 	i = 0;
+	if (!s | !f)
+		return ;
 	while (s[i])
 	{
-		f(i,s + i);
+		f (i, s + i);
 		i++;
 	}
 }

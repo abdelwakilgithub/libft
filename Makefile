@@ -37,18 +37,25 @@ SRC = 	ft_isalpha.c\
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 
+BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ${SRC}
+
 OBJ = $(SRC:%.c=%.o)
+OBJBS = ${BONUS:%.c=%.o}
 
 all: ${NAME}
+bonus: ${BONUS}
 
 $(NAME):${OBJ}
 	ar r ${NAME} ${OBJ}
 ${OBJ}: ${SRC}
 	$(CC) $(CFLAGS) -c ${SRC}
 
+${OBJBS}: ${BONUS}
+	$(CC) $(CFLAGS) -c ${BONUS} && ar r ${NAME} ${OBJBS}
+
+
 clean:
 	rm -rf  *.o
-
 fclean: clean
 	rm -rf ${NAME}
 re: fclean all 

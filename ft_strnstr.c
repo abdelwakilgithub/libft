@@ -1,4 +1,16 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 13:05:27 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/26 13:05:30 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 static size_t	len_str(char *str)
 {
@@ -32,6 +44,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*n_needle;
 
 	i = 0;
+	if (len == 0 && needle[0] != '\0')
+		return (0);
 	n_haystack = (char *)haystack;
 	n_needle = (char *)needle;
 	if (n_needle[0] == '\0')

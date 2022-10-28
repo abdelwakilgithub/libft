@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 12:59:51 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/26 13:00:25 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_atoi(const char *str)
 {
-	long	i;
-	long	result;
-	long	signe;
+	int				i;
+	unsigned long	result;
+	int				signe;
 
 	i = 0;
 	result = 0;
@@ -19,5 +31,9 @@ int	ft_atoi(const char *str)
 		result = result * 10 + str[i] + -48;
 		i++;
 	}
+	if (result > 9223372036854775807 && signe > 0)
+		return (-1);
+	if (result > 9223372036854775807 && signe < 0)
+		return (0);
 	return (signe * result);
 }

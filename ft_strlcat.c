@@ -1,36 +1,16 @@
-#include <stdlib.h>
-/* 
-static size_t	fn_len(char *str)
-{
-	size_t	i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 13:03:45 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/26 13:03:47 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-	size_t	j;
-	size_t	len_c;
-	char	*n_src;
-
-	i = 0;
-	len_c = fn_len(dst);
-	j = len_c;
-	n_src = (char *)src;
-	if (len_c > dstsize)
-		return (len_c + dstsize);
-	while (n_src[i] && i < dstsize - len_c - 1)
-	{
-		dst[j++] = n_src[i++];
-	}
-	dst[j] = '\0';
-	return (len_c + fn_len(n_src));
-}
-  */
+#include "libft.h"
 
 static size_t	fn_len(char *str)
 {
@@ -49,11 +29,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	len_dst;
 	char	*n_src;
 
+	n_src = (char *)src;
+	if (dstsize == 0)
+		return (fn_len(n_src) + dstsize);
 	i = 0;
 	len_dst = fn_len(dst);
 	j = len_dst;
-	n_src = (char *)src;
-
 	if (len_dst > dstsize)
 		return (fn_len(n_src) + dstsize);
 	if (!src[i])

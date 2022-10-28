@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/26 13:01:05 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/26 13:01:08 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
-
-static int len_str(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	int		i;
 	char	c;
 
 	c = '\n';
-	write(fd, s, len_str(s));
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(fd, (s + i), 1);
+		i++;
+	}
 	write(fd, &c, 1);
 }

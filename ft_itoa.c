@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moabdelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/25 14:46:56 by moabdelo          #+#    #+#             */
+/*   Updated: 2022/10/25 14:46:59 by moabdelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static long abs_nb(long nb)
+static long	abs_nb(long nb)
 {
 	if (nb < 0)
 		return (-nb);
@@ -8,15 +20,15 @@ static long abs_nb(long nb)
 		return (nb);
 }
 
-int len_nbcal(long n)
+int	len_nbcal(long n)
 {
 	if (n < 10)
 		return (1);
 	else
-		return (len_nbcal(n/10) + 1);
+		return (len_nbcal(n / 10) + 1);
 }
 
-int len_nb(long n)
+int	len_nb(long n)
 {
 	if (n < 0)
 		return (len_nbcal(abs_nb(n)) + 1);
@@ -40,7 +52,7 @@ char	*ft_itoa(int n)
 	while (nb >= 10)
 	{
 		nb_str[i--] = nb % 10 + 48;
-		nb = nb/10;
+		nb = nb / 10;
 	}
 	nb_str[i] = nb + 48;
 	if (n < 0)
